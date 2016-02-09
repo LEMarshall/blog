@@ -4,12 +4,12 @@ title = "Building a Block with Docker & Hugo, Part 2"
 tags = ["Development", "Hugo", "Docker"]
 +++
 
-I got started with Linux about a year ago when a colleague recommended trying Ubuntu as an alternative to Windows. So far, I've gained basic competency in the terminal, and a few other things. I've experimented quite a bit with different Linux distributions in Virtual Box (installing Arch is probably the single most effective learning experience I could reccomend). But I think working at an IT company (my role is not technical) and constantly being around web developers and devops engineers was what really got me interested in computing, and pushed me to do a lot more than I otherwise would have - like studying Python, and deploying this site.
+I got started with Linux about a year ago when a colleague recommended trying Ubuntu as an alternative to Windows. So far, I've gained basic competency in the terminal, and acquired a working knowledge of the operating system. I've experimented quite a bit with different Linux distributions in Virtual Box - installing and configuring Arch Linux was a great learning experience. But, I think working at an IT company (my role is not technical) and constantly being around web developers and devops engineers was what really got me interested in computing, and pushed me to do a lot more than I otherwise would have - like studying Python, and deploying this site.
 
 
 #### Settling on a solution
 
-There are a lot of ways to host a static site, but I wanted to do it with Docker. Docker has a few advantages that make it very attractive for many different applications, but most importantly, container-ized services are really easy to deploy in different environments. For my purposes this means I can easily launch my site on any Linux environment using a simple Dockerfile as long as Docker installed:
+There are a lot of ways to host a static site, but I wanted to do it with Docker. Docker has a few advantages that make it very attractive for many different use cases, but most importantly, container-ized services are really easy to deploy from one linux environments to another. For my purposes, this means I can easily launch my site on a variety of platforms -  as long as Docker is installed:
 
 ```
 $ docker build .
@@ -17,11 +17,11 @@ $ docker build .
 $ docker run -d -p 80:80 image_name
 ```
 
-The first command builds a docker image using instructions from a Dockerfile, the second launches a pre-configured container serving my site the instant it goes up.
+The first command builds a docker image using instructions from a Dockerfile; the second launches a pre-configured container serving my site the instant it goes up.
 
 ###### Building the site
 
-I don't really know my way around html, css, or javascript, so there was no way I was going to build my own site from scratch in a reasonable amount of time. I decided to use a static site generator. There are a lot of them out there at the moment, so I sort of arbitrarily picked Hugo. It's written in go, generates pages very quickly, and has it's own web server (no need for Nginx or Apache, unless you want some more advanced features). 
+I don't really know my way around html, css, or javascript, so there was no way I was going to build my own site from scratch in a reasonable amount of time. So, I decided to use a static site generator. There are a lot of static site generators out there at the moment, so I sort of arbitrarily picked Hugo. It's written in go, generates pages very quickly, and has it's own web server (no need for Nginx or Apache, unless you want some more advanced features). 
 
 Hugo uses a config file like this:
 
@@ -47,7 +47,7 @@ tags = ["Hugo", "Docker"]
 Your text here.
 ```
 
-All you need to do is set up a directory tree of folders with the pages you want, and put your content in them; Hugo does the rest. 
+All you need to do is set up a directory tree of folders for the pages you want, and place your content in them; Hugo does the rest. 
 
 #### Building a Docker image
 
@@ -113,9 +113,9 @@ ENTRYPOINT /start.sh
 
 If you're interested in reading more about Hugo and Docker, and taking a look at the Dockerfiles which I based mine on, have a look at [this](ilkka.io/blog/static-sites-with-docker/) and [this](www.mrsinham.net/create-a-blog-in-2-min/).
 
-Basically, my Dockerfile borrows an Alpine Linux + Hugo configuration from the first source, and automatic updates using git and github from the second.
+Basically, my Dockerfile borrows an Alpine Linux + Hugo configuration from the first source, and a process for automatic updates using git and github from the second.
 
-The following script launches Hugo Server, and sets it to watch the file system for changes. Meanwhile, git pulls changes from the repository every 60 seconds, and Hugo will rebuild the site and incorporate anything new:
+The following script launches Hugo Server, and sets it to watch the file system for changes. Meanwhile, git pulls changes from the repository every 60 seconds, and Hugo rebuilds the site and incorporates anything new:
 
 ```
 #!/bin/sh
@@ -131,6 +131,6 @@ done
 
 #### Deployment
 
-I haven't decided if I will permanently host this blog anywhere yet, but I have deployed it on a CoreOS instance (has Docker pre-installed) on google cloud. Once I had a working docker image, hosting the site itself was super easy - "docker build ." "docker run ..." and that was all there was to it. To add content I only need to push new posts to my github repository and they appear on the site within a minute.
+I haven't decided if I will permanently host this blog anywhere yet, but I have deployed it on a CoreOS instance (which has Docker pre-installed) on google cloud. Once I had a working docker image, hosting the site itself was super easy - "docker build ." "docker run ..." and that was all there was to it. To add content I only need to push new posts to my github repository and they appear on the site within a minute.
 
-I next steps would include getting a domain name and leaving the Docker container with the site running on a server. I also need to get a handle on markdown language and learn about more about Hugo and the features available with my chosen theme. 
+Logical next steps would include getting a domain name and leaving the Docker container with the site running on a server. I also need to get a handle on markdown language and learn about more about Hugo, and the features available with my chosen theme. 
