@@ -1,6 +1,6 @@
 +++
 date = "2016-02-11"
-title = "Building a Block with Docker & Hugo, Part2"
+title = "Building a Block with Docker & Hugo, Part 2"
 tags = ["Development", "Hugo", "Docker"]
 +++
 
@@ -24,6 +24,16 @@ The first command builds a docker image using instructions from a Dockerfile, th
 I don't really know my way around html, css, or javascript, so there was no way I was going to build my own site from scratch in a reasonable amount of time. I decided to use a static site generator. There are a lot of them out there at the moment, so I sort of arbitrarily picked Hugo. It's written in go, generates pages very quickly, and has it's own web server (no need for Nginx or Apache, unless you want some more advanced features). 
 
 Hugo uses a config file like this:
+
+```
+baseurl = "http://localhost/"
+title = "TestBlog"
+author = "Laurent Marshall"
+copyright = "Copyright (c), Laurent Marshall; all rights reserved."
+[params]
+	sidebartitle = "TestBlog"
+	sidebartagline = "This is a Test"
+```
 
 And generates pages from text files with a .toml, .json, or .yaml header. You only need markdwon to format the rest of your post:
 
@@ -105,7 +115,7 @@ If you're interested in reading more about Hugo and Docker, and taking a look at
 
 Basically, my Dockerfile borrows an Alpine Linux + Hugo configuration from the first source, and automatic updates using git and github from the second.
 
-The following script launches Hugo Server, and sets it to watch the file system for changes. Meanwhile, git pulls changes from the repository every 60 seconds, and Hugo will rebuild the site and incorporating anything new:
+The following script launches Hugo Server, and sets it to watch the file system for changes. Meanwhile, git pulls changes from the repository every 60 seconds, and Hugo will rebuild the site and incorporate anything new:
 
 ```
 #!/bin/sh
