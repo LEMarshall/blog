@@ -5,8 +5,8 @@ FROM alpine
 
 MAINTAINER Laurent Marshall
 
-RUN apk --no-cache add python
-RUN apk --no-cache add --virtual build-dependencies python-dev py-pip build-base
+RUN apk --no-cache add python git
+RUN apk --no-cache add --virtual build-dependencies python-dev py-pip build-base curl
 RUN pip install pygments
 
 ENV HUGO_VERSION 0.15
