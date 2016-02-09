@@ -5,7 +5,9 @@ FROM alpine
 
 MAINTAINER Laurent Marshall
 
-RUN apk --no-cache add curl git
+RUN apk --no-cache add python
+RUN apk --no-cache add --virtual build-dependencies python-dev py-pip build-base
+RUN pip install pygments
 
 ENV HUGO_VERSION 0.15
 ENV HUGO_BINARY hugo_${HUGO_VERSION}_linux_amd64
@@ -18,6 +20,8 @@ RUN curl -L https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${H
 	&& tar -xzf /usr/local/${HUGO_BINARY}.tar.gz -C /usr/local/ \
 	&& ln -s /usr/local/${HUGO_BINARY}/${HUGO_BINARY} /usr/local/bin/hugo \
 	&& rm /usr/local/${HUGO_BINARY}.tar.gz
+
+RUN apk del build-dependencies
 
 RUN hugo new site .
 
