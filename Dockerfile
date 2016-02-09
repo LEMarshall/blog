@@ -5,9 +5,20 @@ FROM alpine
 
 MAINTAINER Laurent Marshall
 
-RUN apk --no-cache add python git
-RUN apk --no-cache add --virtual build-dependencies python-dev py-pip build-base curl
-RUN pip install pygments
+# Install necessary packages:
+
+RUN apk --no-cache add git
+
+# The following packages are only necessary to build the docker image and 
+# will be purged later:
+
+RUN apk --no-cache add --virtual build-dependencies curl
+
+# If you want more advanced text features you can use the following commands to install pygments:
+
+#RUN apk --no-cache add python git
+#RUN apk --no-cache add --virtual build-dependencies python-dev py-pip build-base curl
+#RUN pip install pygments
 
 ENV HUGO_VERSION 0.15
 ENV HUGO_BINARY hugo_${HUGO_VERSION}_linux_amd64

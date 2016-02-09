@@ -1,6 +1,6 @@
 +++
 date = "2016-02-10"
-title = "Create and Serve a Static Site with Docker & Hugo"
+title = "Building a Blog with Docker and Hugo"
 tags = ["Development", "Hugo", "Docker"]
 +++
 
