@@ -1,11 +1,9 @@
 +++
 date = "2016-02-10"
-tags = ["first"]
 title = "Test Post"
+description = "this is just a test"
+tags = ["first"]
 +++
-
-
-### Test Post
 
 Testing Hugo static site generator on Alpine Linux in Docker container.
 
