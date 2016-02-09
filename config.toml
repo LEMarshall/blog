@@ -2,7 +2,6 @@ baseurl = "http://104.155.111.130"
 title = "TestBlog"
 author = "Laurent Marshall"
 copyright = "Copyright (c) 2015, Laurent Marshall; all rights reserved."
-disqusShortname = "testblog"
 [params]
 	sidbartitle = "TestBlog"
 	sidebartagline = "This is a test"

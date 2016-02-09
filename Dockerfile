@@ -5,8 +5,7 @@ FROM alpine
 
 MAINTAINER Laurent Marshall
 
-RUN apk --no-cache add curl git openssh-client
-
+RUN apk --no-cache add curl git
 
 ENV HUGO_VERSION 0.15
 ENV HUGO_BINARY hugo_${HUGO_VERSION}_linux_amd64
@@ -31,7 +30,8 @@ RUN git clone https://github.com/allnightgrocery/hugo-theme-blueberry-detox.git 
 
 EXPOSE 80
 
-# script from www.mrsinham.net/create-a-blog-in-2-min/ - syncs site content with github repository:
+# start.sh script from www.mrsinham.net/create-a-blog-in-2-min/ - syncs site content with github repository
+# and launches hugo server:
 
 ADD start.sh /start.sh
 
