@@ -1,8 +1,7 @@
-baseurl = "http://104.155.49.77"
+baseURL = "LEMarshall.github.io/"
 title = "TestBlog"
-author = "Laurent Marshall"
-copyright = "Copyright (c) 2015, Laurent Marshall; all rights reserved."
+theme = "hugo-theme-blueberry-detox"
 [params]
-	sidbartitle = "TestBlog"
-	sidebartagline = "This is a test"
-
+	description = "Blogging on IT topics and more"
+	author = "Laurent Marshall"
+	copyright = "Copyright (c) 2015, Laurent Marshall; all rights reserved."
