@@ -2,6 +2,6 @@ baseURL = "LEMarshall.github.io/"
 title = "TestBlog"
 theme = "hugo-theme-blueberry-detox"
 [params]
-	description = "Blogging on IT topics and more"
+	description = "What's this all about?"
 	author = "Laurent Marshall"
 	copyright = "Copyright (c) 2015, Laurent Marshall; all rights reserved."
